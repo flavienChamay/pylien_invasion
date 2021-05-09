@@ -8,6 +8,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 
 class AlienInvasion:
@@ -16,6 +17,11 @@ class AlienInvasion:
 
     :method: __init__(self)
     :method: run_game(self)
+    :method: _check_keydown_events(self, event)
+    :method: _check_keyup_events(self, event)
+    :method: _check_events(self)
+    :method: _fire_bullet(self)
+    :method: _update_screen(self)
     """
 
     def __init__(self):
@@ -24,6 +30,8 @@ class AlienInvasion:
 
         :var screen Surface: The screen of the game.
         :var ship Ship: The ship of the player.
+        :var bullets Group: The bullets of the ship of the player.
+        :var bg_color (int, int, int): The background of the game.
         :returns: None.
         """
 
@@ -31,7 +39,10 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
+
+        # Ship and bullets initialized.
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
         # Set background color.
         self.bg_color = (230, 230, 230)
@@ -40,13 +51,13 @@ class AlienInvasion:
         """
         Function that starts the main loop for the game and displays the game.
 
-        :var event Eventlist: An event in the game.
         :returns: None.
         """
 
         while True:
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
 
     def _check_events(self):
@@ -78,6 +89,19 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
+
+    def _fire_bullet(self):
+        """
+        Method that create a new bullet and add it to the bullets group.
+
+        :var new_bullet Bullet: A new bullet shoot from the ship.
+        :returns: None.
+        """
+
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
 
     def _check_keyup_events(self, event):
         """
@@ -100,6 +124,8 @@ class AlienInvasion:
 
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         pygame.display.flip()
 
 
