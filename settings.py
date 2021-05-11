@@ -27,8 +27,8 @@ class Settings:
         :var bullets_allowed int: The number of bullets allowed in the screen.
         """
 
-        self.screen_width = 1200
-        self.screen_height = 800
+        self.screen_width = 960
+        self.screen_height = 540
         self.bg_color = (230, 230, 230)
         self.ship_speed = 1.5
 
