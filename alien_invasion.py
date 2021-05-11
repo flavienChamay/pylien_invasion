@@ -58,6 +58,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            self._update_bullets()
             self._update_screen()
 
     def _check_events(self):
@@ -80,6 +81,7 @@ class AlienInvasion:
         """
         Helper method of _check_events that responds to key presses. And if q is pressed then the game exits.
 
+        :param event Event: An event in the game.
         :returns: None.
         """
 
@@ -94,19 +96,21 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """
-        Method that create a new bullet and add it to the bullets group.
+        Method that creates a new bullet and add it to the bullets group.
 
         :var new_bullet Bullet: A new bullet shoot from the ship.
         :returns: None.
         """
 
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
     def _check_keyup_events(self, event):
         """
         Helper method of _check_events that responds to key releases.
 
+        :param event Event: An event in the game.
         :returns: None.
         """
 
@@ -114,6 +118,21 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+
+    def _update_bullets(self):
+        """
+        Helper method that updates the position of the bullets and get rid of old bullets.
+
+        :returns: None.
+        """
+
+        # Udate bullet positions.
+        self.bullets.update()
+
+        # Get rid of bullets that have disappeared.
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
 
     def _update_screen(self):
         """

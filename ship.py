@@ -11,7 +11,7 @@ class Ship:
     """
     Class that manages all the functionalities of the ship of the player.
 
-    :method: __init__(self)
+    :method: __init__(self, game)
     :method: blitme(self)
     :method: update(self)
     """
@@ -20,6 +20,7 @@ class Ship:
         """
         Initialize the ship and set its starting position.
 
+        :param game AlienInvasion: The current game.
         :var screen Surface: The screen of the game var.
         :var screen_rect Rect: The rectangular coordinates of the ship.
         :var image Surface: Loads the image of the ship.

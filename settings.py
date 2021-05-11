@@ -20,6 +20,11 @@ class Settings:
         :var screen_height int: The height of the screen.
         :var bg_color (int, int, int): The color of the background of the game.
         :var ship_speed int: The speed of the ship.
+        :var bullet_speed float: The speed of the bullet.
+        :var bullet_width int: The width of a bullet.
+        :var bullet_height int: The height of a bullet.
+        :var bullet_color (int, int, int): The color of the bullet.
+        :var bullets_allowed int: The number of bullets allowed in the screen.
         """
 
         self.screen_width = 1200
@@ -32,3 +37,4 @@ class Settings:
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
+        self.bullets_allowed = 3
