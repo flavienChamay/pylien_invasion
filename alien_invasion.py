@@ -25,6 +25,7 @@ class AlienInvasion:
     :method: _update_bullets(self)
     :method: _update_screen(self)
     :method: _create_fleet(self)
+    :method: _update_aliens(self)
     """
 
     def __init__(self):
@@ -64,6 +65,7 @@ class AlienInvasion:
             self.ship.update()
             self.bullets.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -126,7 +128,8 @@ class AlienInvasion:
 
     def _update_bullets(self):
         """
-        Helper method that updates the position of the bullets and get rid of old bullets.
+        Helper method that updates the position of the bullets 
+        and get rid of old bullets.
 
         :returns: None.
         """
@@ -139,9 +142,15 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
+        # Check for any bullets that have hit an alien,
+        # if so get rid of the bullet and the alien.
+        collisions = pygame.sprite.groupcollide(
+            self.bullets, self.aliens, True, True)
+
     def _update_screen(self):
         """
-        Helper method that update images on the screen, and flip to the new screen.
+        Helper method that update images on the screen, 
+        and flip to the new screen.
 
         :returns: None.
         """
@@ -197,6 +206,39 @@ class AlienInvasion:
         alien.rect.x = alien.x
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
         self.aliens.add(alien)
+
+    def _update_aliens(self):
+        """
+        Helper method that checks if the fleet is at an edge and updates the positions of all aliens in the fleet.
+
+        :returns: None.
+        """
+
+        self._check_fleet_edges()
+        self.aliens.update()
+
+    def _check_fleet_edges(self):
+        """
+        Helper method that manages the appropriate respond if any aliens have reached an edge.
+
+        :returns: None.
+        """
+
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+
+    def _change_fleet_direction(self):
+        """
+        Helper method that changes the entire fleet's direction.
+
+        :returns: None.
+        """
+
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
 
 if __name__ == '__main__':
