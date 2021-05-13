@@ -14,6 +14,7 @@ class Ship:
     :method: __init__(self, game)
     :method: blitme(self)
     :method: update(self)
+    :method: center_ship(self)
     """
 
     def __init__(self, game):
@@ -76,3 +77,13 @@ class Ship:
         """
 
         self.screen.blit(self.image, self.rect)
+
+    def center_ship(self):
+        """
+        Method that center the ship.
+
+        :returns: None.
+        """
+
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)

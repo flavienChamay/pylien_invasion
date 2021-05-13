@@ -30,7 +30,6 @@ class Settings:
         self.screen_width = 960
         self.screen_height = 540
         self.bg_color = (230, 230, 230)
-        self.ship_speed = 1.5
 
         # Bullet settings
         self.bullet_speed = 1.0
@@ -44,3 +43,7 @@ class Settings:
         self.fleet_drop_speed = 10
         # fleet_direction of 1 represents right, -1 represents left.
         self.fleet_direction = 1
+
+        # Ship settings
+        self.ship_speed = 1.5
+        self.ship_limit = 3  # TODO: ???
