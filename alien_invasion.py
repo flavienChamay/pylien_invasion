@@ -12,6 +12,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
+from button import Button
 
 
 class AlienInvasion:
@@ -25,7 +26,7 @@ class AlienInvasion:
     :method: _check_events(self)
     :method: _fire_bullet(self)
     :method: _update_bullets(self)
-    :method: _update_screen(self)
+    :method: _screen(self)
     :method: _create_fleet(self)
     :method: _update_aliens(self)
     :method: _ship_hit(self)
@@ -40,9 +41,12 @@ class AlienInvasion:
         :var ship Ship: The ship of the player.
         :var bullets Group: The bullets of the ship of the player.
         :var bg_color (int, int, int): The background of the game.
+        :var stats GameStats: The stats of the current game.
+        :var play_button Button: The play button to trigger the beginning of the game.
         :returns: None.
         """
 
+        pygame.init()
         self.settings = Settings()
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
@@ -59,6 +63,9 @@ class AlienInvasion:
 
         # Create stats of the game.
         self.stats = GameStats(self)
+
+        # Make the play button.
+        self.play_button = Button(self, "Play")
 
     def run_game(self):
         """
@@ -92,6 +99,9 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+            elif event.type == pygame.MOUSEBUTTOMDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                self._check_play_button(mouse_pos)
 
     def _check_keydown_events(self, event):
         """
@@ -113,7 +123,7 @@ class AlienInvasion:
     def _fire_bullet(self):
         """
         Method that creates a new bullet and add it to the bullets group.
-
+nnn
         :var new_bullet Bullet: A new bullet shoot from the ship.
         :returns: None.
         """
@@ -182,6 +192,10 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
+
+        # Draw the play button if the game is inactive.
+        if not self.stats.game_active:
+            self.play_button.draw_button()
 
         pygame.display.flip()
 
@@ -306,6 +320,17 @@ class AlienInvasion:
                 # Treat this action the same as if the ship got hit.
                 self._ship_hit()
                 break
+
+    def _check_play_button(self, mouse_pos):
+        """
+        Helpet method that starts the game when the play button is clicked.
+
+        :param mouse_pos (int, int): Coordinates of the mouse on the screen.
+        :returns: None.
+        """
+
+        if self.play_button.rect.collidepoint(mouse_pos):
+            self.stats.game_active = True
 
 
 if __name__ == '__main__':

@@ -20,13 +20,13 @@ class GameStats:
         :param game AlienInvasion: The current game.
         :var settings Settings: The settings of the game.
         :var game_active bool: True if the game is still active, false if not. 
-        By default, true because the game starts in an active state.
+        By default, false because the game waits for the player to click the play button.
         :returns: None.
         """
 
         self.settings = game.settings
         self.reset_stats()
-        self.game_active = True
+        self.game_active = False
 
     def reset_stats(self):
         """
