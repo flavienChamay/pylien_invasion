@@ -1,0 +1,15 @@
+"""
+This module manages the scoring informations of the game.
+
+:class Scoreboard: Class of the scoreboard.
+"""
+
+import pygame.font
+
+
+class Scoreboard:
+    """
+    Class that manages the displaying of the score on the screen.
+
+    :method: __init__(self, game)
+    """

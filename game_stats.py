@@ -32,8 +32,10 @@ class GameStats:
         """
         Method that reset all statistics when a new game is created.
 
-        :var ships_left :
+        :var ships_left int: The number of lives of the ship.
+        :var score int: The score of the current game.
         :returns: None.
         """
 
         self.ships_left = self.settings.ship_limit
+        self.score = 0

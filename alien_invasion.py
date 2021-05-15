@@ -31,6 +31,7 @@ class AlienInvasion:
     :method: _update_aliens(self)
     :method: _ship_hit(self)
     :method: _check_aliens_bottom(self)
+    :method: _check_bullet_alien_collisions(self)
     """
 
     def __init__(self):
@@ -161,14 +162,15 @@ nnn
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
-        self._check_bullets_alien_collisions()
+        self._check_bullet_alien_collisions()
 
-    def _check_bullets_alien_collisions(self):
+    def _check_bullet_alien_collisions(self):
         """
         Helper method that checks alien-bullet collision. 
         If any bullet hits an alien then it gets rid of the bullets and of the alien.
         And if no more aliens are there then destroys existing bullets and repopulate the fleet of aliens.
 
+        :var collisions Sprite_dict: 
         :returns: None.
         """
 
@@ -176,8 +178,10 @@ nnn
             self.bullets, self.aliens, True, True)
 
         if not self.aliens:
+            # Destroy existing bullets and create new fleet.
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _update_screen(self):
         """
@@ -333,6 +337,7 @@ nnn
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             # Reset the game statistics.
+            self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.stats.game_active = True
 
