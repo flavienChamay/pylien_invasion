@@ -21,12 +21,15 @@ class GameStats:
         :var settings Settings: The settings of the game.
         :var game_active bool: True if the game is still active, false if not. 
         By default, false because the game waits for the player to click the play button.
+        :var high_score int: The highest score of the Alien Invasion in this computer. 
+        High score should never be reset.
         :returns: None.
         """
 
         self.settings = game.settings
         self.reset_stats()
         self.game_active = False
+        self.high_score = 0
 
     def reset_stats(self):
         """

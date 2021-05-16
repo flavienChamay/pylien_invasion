@@ -13,6 +13,7 @@ from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 
 
 class AlienInvasion:
@@ -44,6 +45,7 @@ class AlienInvasion:
         :var bg_color (int, int, int): The background of the game.
         :var stats GameStats: The stats of the current game.
         :var play_button Button: The play button to trigger the beginning of the game.
+        :var sb Scoreboard: The scoreboard of the current game.
         :returns: None.
         """
 
@@ -53,6 +55,12 @@ class AlienInvasion:
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
+        # Create a scoreboard.
+        self.sb = Scoreboard(self)
+
+        # Create stats of the game.
+        self.stats = GameStats(self)
+
         # Ship, bullets and aliens initialized.
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -61,9 +69,6 @@ class AlienInvasion:
 
         # Set background color.
         self.bg_color = (230, 230, 230)
-
-        # Create stats of the game.
-        self.stats = GameStats(self)
 
         # Make the play button.
         self.play_button = Button(self, "Play")
@@ -177,6 +182,13 @@ nnn
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
 
+        # If a collision is detected then update score.
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.sb.prep_score()
+            self.sb.check_high_score()
+
         if not self.aliens:
             # Destroy existing bullets and create new fleet.
             self.bullets.empty()
@@ -196,6 +208,9 @@ nnn
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
+
+        # Draw the score information.
+        self.sb.show_score()
 
         # Draw the play button if the game is inactive.
         if not self.stats.game_active:

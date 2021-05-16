@@ -10,6 +10,8 @@ class Settings:
     This class stores all settings for Alien Invasion.
 
     :method: __init__(self)
+    :method: initialize_dynamic_settings(self)
+    :method: increase_speed(self)
     """
 
     def __init__(self):
@@ -25,6 +27,8 @@ class Settings:
         :var bullet_height int: The height of a bullet.
         :var bullet_color (int, int, int): The color of the bullet.
         :var bullets_allowed int: The number of bullets allowed in the screen.
+        :var score_scale float: 
+        :returns: Settings instance.
         """
 
         self.screen_width = 960
@@ -46,6 +50,9 @@ class Settings:
         # How quickly the game speeds up.
         self.speedup_scale = 1.1
 
+        # How quickly the alien point values increase.
+        self.score_scale = 1.5
+
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
@@ -56,6 +63,7 @@ class Settings:
         :var bullet_speed float: The speed of the bullets.
         :var alien_speed float: The speed of an alien.
         :var fleet_direction int: 1 represents right, -1 represents left.
+        :var alien_points int: The number of points earned by alien eliminated.
         :returns: None.
         """
 
@@ -64,13 +72,21 @@ class Settings:
         self.ship_speed = 1.5
         self.fleet_direction = 1
 
+        # Scoring
+        self.alien_points = 50
+
     def increase_speed(self):
         """
-        Method that inscreases the speed of the game.
+        Method that inscreases the speed of the game and alien point values.
 
+        :var ship_speed float: The speed of the ship being increased.
+        :var bullet_speed float: The speed of the bullet being increased.
+        :var alien_speed float: The speed of the aliens being increased.
         :returns: None.
         """
 
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
+        self.alien_points = int(self.alien_points * self.score_scale)
+        print(self.alien_points)
