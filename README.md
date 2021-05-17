@@ -17,6 +17,7 @@ The player controls a space ship appearing at the bottom center of the screen of
 The player can move the ship right and left with the arrow keys of the keyboard and shoot bullets with the spacebar of the keyboard. At the beginning of the game, a fleet of aliens ships fills the upper side of the screen and moves across and down the screen game. The player has to shoot all the aliens, after that a new alien fleet appears that moves faster than the previous one. If an alien hits the player's space ship or reaches the bottom of the screen then the player loses a ship. If the player loses three ships, the game ends.
 
 ## Screenshots
+![Beginning of the game](./images/screenshot1.jpg)
 
 ## Technologies
 * pygame - version 2.0.1
