@@ -23,7 +23,7 @@ class GameStats:
         By default, false because the game waits for the player to click the play button.
         :var high_score int: The highest score of the Alien Invasion in this computer. 
         High score should never be reset.
-        :returns: None.
+        :returns GameStats: Generates an instance of GameStats class.
         """
 
         self.settings = game.settings
@@ -36,7 +36,7 @@ class GameStats:
         Method that reset all statistics when a new game is created.
 
         :var ships_left int: The number of lives of the ship.
-        :var score int: The score of the current game.
+        :var score int: The score of the current game. Default is at 0 because we begin the game.
         :var level int: The level of the game. By default, it is at 1 (for the first level).
         :returns: None.
         """

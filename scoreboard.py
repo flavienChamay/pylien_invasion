@@ -26,13 +26,15 @@ class Scoreboard:
         """
         Method initializing the scrorekeeping attributes and creates an instance of Scoreboard.
 
+        :param game AlienInvasion: The current game of Alien Invasion.
+        :var game AlienInvasion: The current game of Alien Invasion as an attribute.
         :var screen Surface: The screen of the game.
         :var screen_rect Rect: The dimensions of the screen.
         :var settings Settings: The settings of the game.
         :var stats GameStats: The statistics of the game.
         :var text_color (int, int, int): The color of the text of the scoring.
         :var font Font: The font of the scoring.
-        :returns: Scoreboard.
+        :returns Scoreboard: Generates an instance of the Scoreboard class.
         """
 
         self.game = game
@@ -55,6 +57,7 @@ class Scoreboard:
         """
         Method that turns the score into a rendered image.
 
+        :var rounded_score int: The score rounded.
         :var score_str str: The string of text containing the score.
         :var score_image Surface: The image rendered of the scoring.
         :var score_rect Rect: The rectangle dimension of the scoring.
@@ -121,6 +124,8 @@ class Scoreboard:
         Method that turns the level into a rendered image.
 
         :var level_str str: The current level of the user in the game.       
+        :var level_image Surface: Rendered image of level_str var.
+        :var level_rect Rect: Rectangular dimensions of level_image var.
         :returns: None.
         """
 
@@ -137,6 +142,9 @@ class Scoreboard:
         """
         Method that show how many ships are left.
 
+        :var ships Group: Group of ships indicating lifes of the player.
+        :var ship_number int: The number of each ship to be displayed.
+        :var ship Ship: A ship to be displayed.
         :returns: None.
         """
 

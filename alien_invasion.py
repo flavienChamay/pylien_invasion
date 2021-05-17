@@ -33,12 +33,16 @@ class AlienInvasion:
     :method: _ship_hit(self)
     :method: _check_aliens_bottom(self)
     :method: _check_bullet_alien_collisions(self)
+    :method: _check_fleet_edges(self)
+    :method: _check_play_button(self, mouse_pos)
+    :method: _ship_hit(self)
     """
 
     def __init__(self):
         """
         Initialize the game and create game resources.
 
+        :var settings Settings: The settings of the game.
         :var screen Surface: The screen of the game.
         :var ship Ship: The ship of the player.
         :var bullets Group: The bullets of the ship of the player.
@@ -46,7 +50,8 @@ class AlienInvasion:
         :var stats GameStats: The stats of the current game.
         :var play_button Button: The play button to trigger the beginning of the game.
         :var sb Scoreboard: The scoreboard of the current game.
-        :returns: None.
+        :var aliens Group: The aliens in the game.
+        :returns AlienInvasion: Generates an instance of AlienInvasion.
         """
 
         pygame.init()
@@ -55,11 +60,11 @@ class AlienInvasion:
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
-        # Create a scoreboard.
-        self.sb = Scoreboard(self)
-
         # Create stats of the game.
         self.stats = GameStats(self)
+
+        # Create a scoreboard.
+        self.sb = Scoreboard(self)
 
         # Ship, bullets and aliens initialized.
         self.ship = Ship(self)
@@ -95,6 +100,7 @@ class AlienInvasion:
         Helper method that responds to keypresses and mouse events.
 
         :var event Event: An event on the game.
+        :var mouse_pos (int, int): The position of the mouse in (x, y) coordinates.
         :returns: None.
         """
 
@@ -113,7 +119,7 @@ class AlienInvasion:
         """
         Helper method of _check_events that responds to key presses. And if q is pressed then the game exits.
 
-        :param event Event: An event in the game.
+        :param event Event: An event in the game.     
         :returns: None.
         """
 
@@ -128,7 +134,7 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """
-        Method that creates a new bullet and add it to the bullets group.
+        Helper method that creates a new bullet and add it to the bullets group.
 nnn
         :var new_bullet Bullet: A new bullet shoot from the ship.
         :returns: None.
@@ -175,7 +181,7 @@ nnn
         If any bullet hits an alien then it gets rid of the bullets and of the alien.
         And if no more aliens are there then destroys existing bullets and repopulate the fleet of aliens.
 
-        :var collisions Sprite_dict: 
+        :var collisions Sprite_dict: Dictionnary of the collisions between an alien and bullets.
         :returns: None.
         """
 
@@ -231,6 +237,10 @@ nnn
         :var available_space_x int: The available horizontal space on the screen for the fleet.
         :var number_aliens_x int: The number of aliens in a row.
         :var alien_number int: The number of the alien in the fleet.
+        :var ship_height int: The height of an alien.
+        :var available_space_y int: Vertical available space between aliens.
+        :var available_space_x int: Horizontal available space between aliens.
+        :var number_rows int: Number of rows of aliens.
         :returns: None.
         """
 
@@ -257,7 +267,11 @@ nnn
         This helper method creates an alien and place it on the row.
 
         :parma alien_number int: The number of the alien in the fleet.    
-        :retunrs: None.
+        :param row_number int: The row number of the alien fleet.
+        :var alien Alien: The alien to be created.
+        :var alien_width int: The width of an alien.
+        :var alien_height int: The height of an alien.      
+        :returns: None.
         """
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
@@ -287,6 +301,7 @@ nnn
         """
         Helper method that manages the appropriate respond if any aliens have reached an edge.
 
+        :var alien Alien: An alien in the sprite of the fleet.
         :returns: None.
         """
 
@@ -299,6 +314,7 @@ nnn
         """
         Helper method that changes the entire fleet's direction.
 
+        :var alien Alien: An alien in the sprite.
         :returns: None.
         """
 
@@ -336,6 +352,7 @@ nnn
         """
         Helper method that checks if an alien hits the bottom of the screen.
 
+        :var screen_rect Rect: Rectangular dimensions of the screen.
         :returns: None.
         """
 
@@ -351,6 +368,7 @@ nnn
         Helpet method that starts the game when the play button is clicked.
 
         :param mouse_pos (int, int): Coordinates of the mouse on the screen.
+        :var button_clicked bool: True if the button is clicked, false if not.
         :returns: None.
         """
 

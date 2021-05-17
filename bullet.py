@@ -21,10 +21,13 @@ class Bullet(Sprite):
         """
         Initialize a bullet object at the ship's current position.
 
+        :param game AlienInvasion: The current game of Alien Invasion.
         :var screen Surface: The screen of the game.
         :var settings Settings: The current settings of the game.
         :var color (int, int, int): Color of the bullet.
-        :returns: None.
+        :var rect Rect: The rectangular dimension of the bullet.
+        :var y int: The vertical coordinate of the bullet on the screen.
+        :returns Bullet: Generates an instance of the Bullet class.
         """
 
         super().__init__()
@@ -44,8 +47,7 @@ class Bullet(Sprite):
         """
         Method that moves the bullet up the screen.
 
-        :var y float: The speed of the bullet.
-        :var rect.y float: The y coordinates of the bullet.
+        :var y float: The y coordinates of the bullet.
         :returns: None.
         """
 

@@ -14,6 +14,7 @@ class Alien(Sprite):
 
     :method: __init__(self, game)
     :mehtod: update(self)
+    :method: check_edges(self)
     """
 
     def __init__(self, game):
@@ -25,11 +26,10 @@ class Alien(Sprite):
         :var rect Rect: The rectangular position of the alien.
         :var x float: The horizontal position of the alien on the screen.
         :var settings Settings: The settings of the game.
-        :retuns: None.
+        :retuns Alien: Instance of an alien object.
         """
 
         super().__init__()
-
         self.screen = game.screen
 
         # Load settings of the game.

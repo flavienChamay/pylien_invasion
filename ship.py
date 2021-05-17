@@ -27,11 +27,11 @@ class Ship(Sprite):
         :var screen_rect Rect: The rectangular coordinates of the ship.
         :var image Surface: Loads the image of the ship.
         :var rect Rect: The rectangular coordinates of the image of the ship.
-        :var rect.midbottom Rect: The rectangular coordinates of the ship displayed at the bottom center of the screen.
         :var moving_left Bool: True if the ship is moving left, false if not. Default at False.
         :var moving_right Bool: True if the ship is moving right, false if not. Default at False.
         :var settings Settings: The settings of the game.
-        :returns: None.
+        :var x float: The horizontal coordinate of the ship.
+        :returns Ship: Generates a Ship instance.
         """
 
         super().__init__()
@@ -58,7 +58,7 @@ class Ship(Sprite):
         """
         Method that updates the ship's position based on the movement flag.
 
-        :var rect.x int: The X coordinate of the ship.
+        :var x int: The X coordinate of the ship.
         :returns: None.
         """
 

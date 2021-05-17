@@ -27,7 +27,8 @@ class Settings:
         :var bullet_height int: The height of a bullet.
         :var bullet_color (int, int, int): The color of the bullet.
         :var bullets_allowed int: The number of bullets allowed in the screen.
-        :var score_scale float: 
+        :var score_scale float: How quickly the alien point values increase.
+        :var speedup_scale float: How quickly the game speeds up.
         :returns: Settings instance.
         """
 
@@ -47,10 +48,8 @@ class Settings:
         # Ship settings
         self.ship_limit = 3
 
-        # How quickly the game speeds up.
         self.speedup_scale = 1.1
 
-        # How quickly the alien point values increase.
         self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
@@ -82,6 +81,7 @@ class Settings:
         :var ship_speed float: The speed of the ship being increased.
         :var bullet_speed float: The speed of the bullet being increased.
         :var alien_speed float: The speed of the aliens being increased.
+        :var alien_points int: The points given to the player each time an alien is hit.
         :returns: None.
         """
 
@@ -89,4 +89,3 @@ class Settings:
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
         self.alien_points = int(self.alien_points * self.score_scale)
-        print(self.alien_points)
