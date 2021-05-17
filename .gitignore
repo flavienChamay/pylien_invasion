@@ -125,4 +125,4 @@ venv.bak/
 dmypy.json
 
 # Ignore all emacs secondary files
-*/*.*~
+*~
