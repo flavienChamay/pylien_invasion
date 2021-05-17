@@ -5,11 +5,12 @@ This module contains the description of the ship of the player in the Alien Inva
 """
 
 import pygame
+from pygame.sprite import Sprite
 
 
-class Ship:
+class Ship(Sprite):
     """
-    Class that manages all the functionalities of the ship of the player.
+    Class inheriting Sprite that manages all the functionalities of the ship of the player.
 
     :method: __init__(self, game)
     :method: blitme(self)
@@ -33,6 +34,7 @@ class Ship:
         :returns: None.
         """
 
+        super().__init__()
         # Position of the ship set.
         self.screen = game.screen
         self.screen_rect = game.screen.get_rect()

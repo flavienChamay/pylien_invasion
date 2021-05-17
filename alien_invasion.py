@@ -195,6 +195,10 @@ nnn
             self._create_fleet()
             self.settings.increase_speed()
 
+            # Increase level
+            self.stats.level += 1
+            self.sb.prep_level()
+
     def _update_screen(self):
         """
         Helper method that update images on the screen, 
@@ -310,8 +314,9 @@ nnn
         """
 
         if self.stats.ships_left > 0:
-            # Decrement the number of ships left.
+            # Decrement the number of ships left and update scoreboard.
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
 
             # Get rid of any remaining aliens and bullets.
             self.aliens.empty()
@@ -355,6 +360,9 @@ nnn
             self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.stats.game_active = True
+            self.sb.prep_score()
+            self.sb.prep_level()
+            self.sb.prep_ships()
 
             # Get rid of any remaining aliens and bullets.
             self.aliens.empty()

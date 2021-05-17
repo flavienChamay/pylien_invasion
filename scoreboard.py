@@ -5,6 +5,8 @@ This module manages the scoring informations of the game.
 """
 
 import pygame.font
+from pygame.sprite import Group
+from ship import Ship
 
 
 class Scoreboard:
@@ -15,7 +17,9 @@ class Scoreboard:
     :method: check_high_score(self)
     :method: prep_score(self)
     :method: show_score(self)
-    :mehtod: prep_high_score(self)
+    :method: prep_high_score(self)
+    :method: prep_level(self)
+    :method: prep_ships(self)
     """
 
     def __init__(self, game):
@@ -30,6 +34,8 @@ class Scoreboard:
         :var font Font: The font of the scoring.
         :returns: Scoreboard.
         """
+
+        self.game = game
         self.screen = game.screen
         self.screen_rect = self.screen.get_rect()
         self.settings = game.settings
@@ -42,6 +48,8 @@ class Scoreboard:
         # Prepare the initial score image.
         self.prep_score()
         self.prep_high_score()
+        self.prep_level()
+        self.prep_ships()
 
     def prep_score(self):
         """
@@ -65,12 +73,14 @@ class Scoreboard:
 
     def show_score(self):
         """
-        Method that draw the score to the screen.
+        Method that draw the score, the level and the ships (lifes of the player) to the screen.
 
         :returns: None.
         """
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
+        self.screen.blit(self.level_image, self.level_rect)
+        self.ships.draw(self.screen)
 
     def prep_high_score(self):
         """
@@ -105,3 +115,34 @@ class Scoreboard:
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()
+
+    def prep_level(self):
+        """
+        Method that turns the level into a rendered image.
+
+        :var level_str str: The current level of the user in the game.       
+        :returns: None.
+        """
+
+        level_str = str(self.stats.level)
+        self.level_image = self.font.render(
+            level_str, True, self.text_color, self.settings.bg_color)
+
+        # Position the level below the score.
+        self.level_rect = self.level_image.get_rect()
+        self.level_rect.right = self.score_rect.right
+        self.level_rect.top = self.score_rect.bottom + 10
+
+    def prep_ships(self):
+        """
+        Method that show how many ships are left.
+
+        :returns: None.
+        """
+
+        self.ships = Group()
+        for ship_number in range(self.stats.ships_left):
+            ship = Ship(self.game)
+            ship.rect.x = 10 + ship_number * ship.rect.width
+            ship.rect.y = 10
+            self.ships.add(ship)

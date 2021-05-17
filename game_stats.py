@@ -37,8 +37,10 @@ class GameStats:
 
         :var ships_left int: The number of lives of the ship.
         :var score int: The score of the current game.
+        :var level int: The level of the game. By default, it is at 1 (for the first level).
         :returns: None.
         """
 
         self.ships_left = self.settings.ship_limit
         self.score = 0
+        self.level = 1
