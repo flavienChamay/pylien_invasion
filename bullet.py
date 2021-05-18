@@ -1,7 +1,7 @@
 """
-This module manages the bullets of the ship of the player.
+Manage the bullets of the ship of the player.
 
-:class Bullet(Sprite): Class that manages the bullets.
+:class: Bullet(Sprite)
 """
 
 import pygame
@@ -10,7 +10,7 @@ from pygame.sprite import Sprite
 
 class Bullet(Sprite):
     """
-    Class inheriting of the Sprite class that manages the bullets.
+    Manage the bullets of the player.
 
     :method: __init__(self, game)
     :method: update(self)
@@ -29,7 +29,6 @@ class Bullet(Sprite):
         :var y int: The vertical coordinate of the bullet on the screen.
         :returns Bullet: Generates an instance of the Bullet class.
         """
-
         super().__init__()
         self.screen = game.screen
         self.settings = game.settings
@@ -45,12 +44,11 @@ class Bullet(Sprite):
 
     def update(self):
         """
-        Method that moves the bullet up the screen.
+        Move the bullet up the screen.
 
         :var y float: The y coordinates of the bullet.
         :returns: None.
         """
-
         # Update the decimal position of the bullet
         self.y -= self.settings.bullet_speed
         # Update the rec position of the bullet.
@@ -58,9 +56,8 @@ class Bullet(Sprite):
 
     def draw_bullet(self):
         """
-        Method that draws the bullet to the screen.
+        Draw the bullet to the screen.
 
         :returns: None.
         """
-
         pygame.draw.rect(self.screen, self.color, self.rect)

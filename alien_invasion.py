@@ -1,7 +1,7 @@
 """
-This module manages the entire Alien Invasion game.
+Manages the entire Alien Invasion game.
 
-:class AlienInvasion: Main class of the game, managing all functionalities.
+:class: AlienInvasion
 """
 
 import sys
@@ -18,7 +18,7 @@ from scoreboard import Scoreboard
 
 class AlienInvasion:
     """
-    Class that manages the game assets and its behavior.
+    Manages the game assets and its behavior.
 
     :method: __init__(self)
     :method: run_game(self)
@@ -53,7 +53,6 @@ class AlienInvasion:
         :var aliens Group: The aliens in the game.
         :returns AlienInvasion: Generates an instance of AlienInvasion.
         """
-
         pygame.init()
         self.settings = Settings()
         self.screen = pygame.display.set_mode(
@@ -80,11 +79,10 @@ class AlienInvasion:
 
     def run_game(self):
         """
-        Function that starts the main loop for the game and displays the game.
+        Start the main loop for the game and displays the game.
 
         :returns: None.
         """
-
         while True:
             self._check_events()
 
@@ -97,13 +95,12 @@ class AlienInvasion:
 
     def _check_events(self):
         """
-        Helper method that responds to keypresses and mouse events.
+        Respond to keypresses and mouse events.
 
         :var event Event: An event on the game.
         :var mouse_pos (int, int): The position of the mouse in (x, y) coordinates.
         :returns: None.
         """
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -117,12 +114,11 @@ class AlienInvasion:
 
     def _check_keydown_events(self, event):
         """
-        Helper method of _check_events that responds to key presses. And if q is pressed then the game exits.
+        Respond to key presses. And if q is pressed then the game exits.
 
         :param event Event: An event in the game.     
         :returns: None.
         """
-
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
@@ -134,24 +130,22 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """
-        Helper method that creates a new bullet and add it to the bullets group.
-nnn
+        Create a new bullet and add it to the bullets group.
+
         :var new_bullet Bullet: A new bullet shoot from the ship.
         :returns: None.
         """
-
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
 
     def _check_keyup_events(self, event):
         """
-        Helper method of _check_events that responds to key releases.
+        Respond to key releases.
 
         :param event Event: An event in the game.
         :returns: None.
         """
-
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
@@ -159,12 +153,10 @@ nnn
 
     def _update_bullets(self):
         """
-        Helper method that updates the position of the bullets 
-        and get rid of old bullets.
+        Update the position of the bullets and get rid of old bullets.
 
         :returns: None.
         """
-
         # Udate bullet positions.
         self.bullets.update()
 
@@ -177,14 +169,14 @@ nnn
 
     def _check_bullet_alien_collisions(self):
         """
-        Helper method that checks alien-bullet collision. 
+        Check alien-bullet collision.
+
         If any bullet hits an alien then it gets rid of the bullets and of the alien.
         And if no more aliens are there then destroys existing bullets and repopulate the fleet of aliens.
 
         :var collisions Sprite_dict: Dictionnary of the collisions between an alien and bullets.
         :returns: None.
         """
-
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
 
@@ -207,12 +199,10 @@ nnn
 
     def _update_screen(self):
         """
-        Helper method that update images on the screen, 
-        and flip to the new screen.
+        Update images on the screen and flip to the new screen.
 
         :returns: None.
         """
-
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
         for bullet in self.bullets.sprites():
@@ -230,7 +220,7 @@ nnn
 
     def _create_fleet(self):
         """
-        Method that creates a fleet of aliens.
+        Create a fleet of aliens.
 
         :var alien Alien: An alien of the fleet.
         :var alien_width int: The width of an alien.
@@ -243,7 +233,6 @@ nnn
         :var number_rows int: Number of rows of aliens.
         :returns: None.
         """
-
         # Making an alien and finding the number of aliens in a row.
         # Spacing between each alien is equal to one alien width.
         alien = Alien(self)
@@ -264,7 +253,7 @@ nnn
 
     def _create_alien(self, alien_number, row_number):
         """
-        This helper method creates an alien and place it on the row.
+        Create an alien and place it on the row.
 
         :parma alien_number int: The number of the alien in the fleet.    
         :param row_number int: The row number of the alien fleet.
@@ -282,11 +271,10 @@ nnn
 
     def _update_aliens(self):
         """
-        Helper method that checks if the fleet is at an edge and updates the positions of all aliens in the fleet.
+        Check if the fleet is at an edge and updates the positions of all aliens in the fleet.
 
         :returns: None.
         """
-
         self._check_fleet_edges()
         self.aliens.update()
 
@@ -299,12 +287,11 @@ nnn
 
     def _check_fleet_edges(self):
         """
-        Helper method that manages the appropriate respond if any aliens have reached an edge.
+        Manage the appropriate respond if any aliens have reached an edge.
 
         :var alien Alien: An alien in the sprite of the fleet.
         :returns: None.
         """
-
         for alien in self.aliens.sprites():
             if alien.check_edges():
                 self._change_fleet_direction()
@@ -312,23 +299,21 @@ nnn
 
     def _change_fleet_direction(self):
         """
-        Helper method that changes the entire fleet's direction.
+        Change the entire fleet's direction.
 
         :var alien Alien: An alien in the sprite.
         :returns: None.
         """
-
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
 
     def _ship_hit(self):
         """
-        This helper method manages the response of the ship to an alien ship.
+        Manage the response of the ship to an alien ship.
 
         :returns: None.
         """
-
         if self.stats.ships_left > 0:
             # Decrement the number of ships left and update scoreboard.
             self.stats.ships_left -= 1
@@ -350,12 +335,11 @@ nnn
 
     def _check_aliens_bottom(self):
         """
-        Helper method that checks if an alien hits the bottom of the screen.
+        Check if an alien hits the bottom of the screen.
 
         :var screen_rect Rect: Rectangular dimensions of the screen.
         :returns: None.
         """
-
         screen_rect = self.screen.get_rect()
         for alien in self.aliens.sprites():
             if alien.rect.bottom >= screen_rect.bottom:
@@ -365,13 +349,12 @@ nnn
 
     def _check_play_button(self, mouse_pos):
         """
-        Helpet method that starts the game when the play button is clicked.
+        Start the game when the play button is clicked.
 
         :param mouse_pos (int, int): Coordinates of the mouse on the screen.
         :var button_clicked bool: True if the button is clicked, false if not.
         :returns: None.
         """
-
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             # Reset the game statistics.

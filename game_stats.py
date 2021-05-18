@@ -1,13 +1,13 @@
 """
-This module manages and tracks the statistics of the game.
+Manage and tracks the statistics of the game.
 
-:class GameStats: The class that manages statistics.
+:class: GameStats()
 """
 
 
 class GameStats:
     """
-    Class that tracks statistics for Alien Invasion game.
+    Tracks the statistics of the game.
 
     :method: __init__(self, game)
     :method: reset_stats(self)
@@ -15,7 +15,7 @@ class GameStats:
 
     def __init__(self, game):
         """
-        Method that initialize the GameStats class.
+        Initialize the GameStats class.
 
         :param game AlienInvasion: The current game.
         :var settings Settings: The settings of the game.
@@ -25,7 +25,6 @@ class GameStats:
         High score should never be reset.
         :returns GameStats: Generates an instance of GameStats class.
         """
-
         self.settings = game.settings
         self.reset_stats()
         self.game_active = False
@@ -33,14 +32,13 @@ class GameStats:
 
     def reset_stats(self):
         """
-        Method that reset all statistics when a new game is created.
+        Reset all statistics when a new game is created.
 
         :var ships_left int: The number of lives of the ship.
         :var score int: The score of the current game. Default is at 0 because we begin the game.
         :var level int: The level of the game. By default, it is at 1 (for the first level).
         :returns: None.
         """
-
         self.ships_left = self.settings.ship_limit
         self.score = 0
         self.level = 1

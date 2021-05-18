@@ -1,7 +1,7 @@
 """
-This module manages a button in the game.
+Manage a button in the game.
 
-:class Button: Class that manages the button.
+:class: Button()
 """
 
 import pygame.font
@@ -9,7 +9,7 @@ import pygame.font
 
 class Button:
     """
-    Class managing a click button in the game.
+    Manage a clicked button in the game.
 
     :method: __init__(self, game, msg)
     :method: _prep_msg(self, msg)
@@ -32,7 +32,6 @@ class Button:
         :var rect Rect: The rectangular dimensions of the button.
         :returns Button: Generates an instance of the Button class.
         """
-
         self.screen = game.screen
         self.screen_rect = self.screen.get_rect()
 
@@ -51,14 +50,13 @@ class Button:
 
     def _prep_msg(self, msg):
         """
-        Helper method that turns msg into a rendered image and center text on the button.
+        Turn msg into a rendered image and center text on the button.
 
         :param msg str: String of text in the button.
         :var msg_image Surface: The message rendered into an image.
         :var msg_image_rect Rect: The rectangular dimensions of msg_image.
         :returns: None.
         """
-
         self.msg_image = self.font.render(
             msg, True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
@@ -66,10 +64,9 @@ class Button:
 
     def draw_button(self):
         """
-        Method that draw a blank button and draw the message in it.
+        Draw a blank button and draw the message in it.
 
         :returns: None.
         """
-
         self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)

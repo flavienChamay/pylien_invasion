@@ -1,13 +1,13 @@
 """
-This module contains all the settings for the Alien Invasion game.
+Contain all the settings for the Alien Invasion game.
 
-:class Settings: Class containing all settings of the game.
+:class: Settings()
 """
 
 
 class Settings:
     """
-    This class stores all settings for Alien Invasion.
+    Stores all the settings of the game.
 
     :method: __init__(self)
     :method: initialize_dynamic_settings(self)
@@ -31,7 +31,6 @@ class Settings:
         :var speedup_scale float: How quickly the game speeds up.
         :returns: Settings instance.
         """
-
         self.screen_width = 960
         self.screen_height = 540
         self.bg_color = (230, 230, 230)
@@ -56,7 +55,7 @@ class Settings:
 
     def initialize_dynamic_settings(self):
         """
-        Method that initialize the settings that change throughout the game.
+        Initialize the settings that change throughout the game.
 
         :var ship_speed float: The speed of the ship.
         :var bullet_speed float: The speed of the bullets.
@@ -65,7 +64,6 @@ class Settings:
         :var alien_points int: The number of points earned by alien eliminated.
         :returns: None.
         """
-
         self.alien_speed = 1.0
         self.bullet_speed = 1.0
         self.ship_speed = 1.5
@@ -76,7 +74,7 @@ class Settings:
 
     def increase_speed(self):
         """
-        Method that inscreases the speed of the game and alien point values.
+        Inscreases the speed of the game and alien point values.
 
         :var ship_speed float: The speed of the ship being increased.
         :var bullet_speed float: The speed of the bullet being increased.
@@ -84,7 +82,6 @@ class Settings:
         :var alien_points int: The points given to the player each time an alien is hit.
         :returns: None.
         """
-
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale

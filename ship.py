@@ -1,8 +1,9 @@
 """
-This module contains the description of the ship of the player in the Alien Invasion game.
+Contain the description of the ship of the player in the Alien Invasion game.
 
-:class Ship: This class is the ship of the player.
+:class: Ship(Sprite)
 """
+
 
 import pygame
 from pygame.sprite import Sprite
@@ -10,7 +11,7 @@ from pygame.sprite import Sprite
 
 class Ship(Sprite):
     """
-    Class inheriting Sprite that manages all the functionalities of the ship of the player.
+    Manage all the functionalities of the ship of the player.
 
     :method: __init__(self, game)
     :method: blitme(self)
@@ -33,7 +34,6 @@ class Ship(Sprite):
         :var x float: The horizontal coordinate of the ship.
         :returns Ship: Generates a Ship instance.
         """
-
         super().__init__()
         # Position of the ship set.
         self.screen = game.screen
@@ -56,12 +56,11 @@ class Ship(Sprite):
 
     def update(self):
         """
-        Method that updates the ship's position based on the movement flag.
+        Update the ship's position based on the movement flag.
 
         :var x int: The X coordinate of the ship.
         :returns: None.
         """
-
         # Update the ship's x value, not the rect.
         if self.moving_right and (self.rect.right < self.screen_rect.right):
             self.x += self.settings.ship_speed
@@ -73,19 +72,17 @@ class Ship(Sprite):
 
     def blitme(self):
         """
-        Function that draws the ship at its current location.
+        Draw the ship at its current location.
 
         :returns: None.
         """
-
         self.screen.blit(self.image, self.rect)
 
     def center_ship(self):
         """
-        Method that center the ship.
+        Center the ship.
 
         :returns: None.
         """
-
         self.rect.midbottom = self.screen_rect.midbottom
         self.x = float(self.rect.x)

@@ -1,8 +1,9 @@
 """
-This module manages the scoring informations of the game.
+Manage the scoring informations of the game.
 
-:class Scoreboard: Class of the scoreboard.
+:class: Scoreboard()
 """
+
 
 import pygame.font
 from pygame.sprite import Group
@@ -11,7 +12,7 @@ from ship import Ship
 
 class Scoreboard:
     """
-    Class that manages the displaying of the score on the screen.
+    Manage the displaying of the score on the screen.
 
     :method: __init__(self, game)
     :method: check_high_score(self)
@@ -24,7 +25,7 @@ class Scoreboard:
 
     def __init__(self, game):
         """
-        Method initializing the scrorekeeping attributes and creates an instance of Scoreboard.
+        Initialize the scrorekeeping attributes and creates an instance of Scoreboard.
 
         :param game AlienInvasion: The current game of Alien Invasion.
         :var game AlienInvasion: The current game of Alien Invasion as an attribute.
@@ -36,7 +37,6 @@ class Scoreboard:
         :var font Font: The font of the scoring.
         :returns Scoreboard: Generates an instance of the Scoreboard class.
         """
-
         self.game = game
         self.screen = game.screen
         self.screen_rect = self.screen.get_rect()
@@ -55,7 +55,7 @@ class Scoreboard:
 
     def prep_score(self):
         """
-        Method that turns the score into a rendered image.
+        Turn the score into a rendered image.
 
         :var rounded_score int: The score rounded.
         :var score_str str: The string of text containing the score.
@@ -63,7 +63,6 @@ class Scoreboard:
         :var score_rect Rect: The rectangle dimension of the scoring.
         :returns: None.
         """
-
         rounded_score = round(self.stats.score, -1)
         score_str = "{:,}".format(rounded_score)
         self.score_image = self.font.render(
@@ -76,7 +75,7 @@ class Scoreboard:
 
     def show_score(self):
         """
-        Method that draw the score, the level and the ships (lifes of the player) to the screen.
+        Draw the score, the level and the ships (lifes of the player) to the screen.
 
         :returns: None.
         """
@@ -87,7 +86,7 @@ class Scoreboard:
 
     def prep_high_score(self):
         """
-        Method that turns the high score into a rendered image.
+        Turn the high score into a rendered image.
 
         :var high_score int: Highest score in the game on this computer.
         :var high_score_str: Highest score converted into an image.
@@ -95,7 +94,6 @@ class Scoreboard:
         :var high_score_rect Rect: Dimension of the var high_score_image.
         :returns: None.
         """
-
         high_score = round(self.stats.high_score, -1)
         high_score_str = "{:,}".format(high_score)
         self.high_score_image = self.font.render(
@@ -108,27 +106,24 @@ class Scoreboard:
 
     def check_high_score(self):
         """
-        Method that checks to see if there's a new high score.
-        And updates the value of the highest score if there is one.
+        Check for new high score and update it if necessary.
 
         :var stats.high_score int: The highest score of the game on this computer.
         :returns: None.
         """
-
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()
 
     def prep_level(self):
         """
-        Method that turns the level into a rendered image.
+        Turn the level into a rendered image.
 
         :var level_str str: The current level of the user in the game.       
         :var level_image Surface: Rendered image of level_str var.
         :var level_rect Rect: Rectangular dimensions of level_image var.
         :returns: None.
         """
-
         level_str = str(self.stats.level)
         self.level_image = self.font.render(
             level_str, True, self.text_color, self.settings.bg_color)
@@ -140,14 +135,13 @@ class Scoreboard:
 
     def prep_ships(self):
         """
-        Method that show how many ships are left.
+        Show how many ships are left.
 
         :var ships Group: Group of ships indicating lifes of the player.
         :var ship_number int: The number of each ship to be displayed.
         :var ship Ship: A ship to be displayed.
         :returns: None.
         """
-
         self.ships = Group()
         for ship_number in range(self.stats.ships_left):
             ship = Ship(self.game)
