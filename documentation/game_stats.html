@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module game_stats</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game_stats</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/magicuser/Documents/WORK/CS/pylien_invasion/game_stats.py">/home/magicuser/Documents/WORK/CS/pylien_invasion/game_stats.py</a></font></td></tr></table>
+    <p><tt>Manage&nbsp;and&nbsp;tracks&nbsp;the&nbsp;statistics&nbsp;of&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+:class:&nbsp;<a href="#GameStats">GameStats</a>()</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="game_stats.html#GameStats">GameStats</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GameStats">class <strong>GameStats</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GameStats">GameStats</a>(game)<br>
+&nbsp;<br>
+Tracks&nbsp;the&nbsp;statistics&nbsp;of&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+:method:&nbsp;<a href="#GameStats-__init__">__init__</a>(self,&nbsp;game)<br>
+:method:&nbsp;<a href="#GameStats-reset_stats">reset_stats</a>(self)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GameStats-__init__"><strong>__init__</strong></a>(self, game)</dt><dd><tt>Initialize&nbsp;the&nbsp;<a href="#GameStats">GameStats</a>&nbsp;class.<br>
+&nbsp;<br>
+:param&nbsp;game&nbsp;AlienInvasion:&nbsp;The&nbsp;current&nbsp;game.<br>
+:var&nbsp;settings&nbsp;Settings:&nbsp;The&nbsp;settings&nbsp;of&nbsp;the&nbsp;game.<br>
+:var&nbsp;game_active&nbsp;bool:&nbsp;True&nbsp;if&nbsp;the&nbsp;game&nbsp;is&nbsp;still&nbsp;active,&nbsp;false&nbsp;if&nbsp;not.&nbsp;<br>
+By&nbsp;default,&nbsp;false&nbsp;because&nbsp;the&nbsp;game&nbsp;waits&nbsp;for&nbsp;the&nbsp;player&nbsp;to&nbsp;click&nbsp;the&nbsp;play&nbsp;button.<br>
+:var&nbsp;high_score&nbsp;int:&nbsp;The&nbsp;highest&nbsp;score&nbsp;of&nbsp;the&nbsp;Alien&nbsp;Invasion&nbsp;in&nbsp;this&nbsp;computer.&nbsp;<br>
+High&nbsp;score&nbsp;should&nbsp;never&nbsp;be&nbsp;reset.<br>
+:returns&nbsp;<a href="#GameStats">GameStats</a>:&nbsp;Generates&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#GameStats">GameStats</a>&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="GameStats-reset_stats"><strong>reset_stats</strong></a>(self)</dt><dd><tt>Reset&nbsp;all&nbsp;statistics&nbsp;when&nbsp;a&nbsp;new&nbsp;game&nbsp;is&nbsp;created.<br>
+&nbsp;<br>
+:var&nbsp;ships_left&nbsp;int:&nbsp;The&nbsp;number&nbsp;of&nbsp;lives&nbsp;of&nbsp;the&nbsp;ship.<br>
+:var&nbsp;score&nbsp;int:&nbsp;The&nbsp;score&nbsp;of&nbsp;the&nbsp;current&nbsp;game.&nbsp;Default&nbsp;is&nbsp;at&nbsp;0&nbsp;because&nbsp;we&nbsp;begin&nbsp;the&nbsp;game.<br>
+:var&nbsp;level&nbsp;int:&nbsp;The&nbsp;level&nbsp;of&nbsp;the&nbsp;game.&nbsp;By&nbsp;default,&nbsp;it&nbsp;is&nbsp;at&nbsp;1&nbsp;(for&nbsp;the&nbsp;first&nbsp;level).<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

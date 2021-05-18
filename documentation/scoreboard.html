@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module scoreboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>scoreboard</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/magicuser/Documents/WORK/CS/pylien_invasion/scoreboard.py">/home/magicuser/Documents/WORK/CS/pylien_invasion/scoreboard.py</a></font></td></tr></table>
+    <p><tt>Manage&nbsp;the&nbsp;scoring&nbsp;informations&nbsp;of&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+:class:&nbsp;<a href="#Scoreboard">Scoreboard</a>()</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pygame.html">pygame</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="scoreboard.html#Scoreboard">Scoreboard</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Scoreboard">class <strong>Scoreboard</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Scoreboard">Scoreboard</a>(game)<br>
+&nbsp;<br>
+Manage&nbsp;the&nbsp;displaying&nbsp;of&nbsp;the&nbsp;score&nbsp;on&nbsp;the&nbsp;screen.<br>
+&nbsp;<br>
+:method:&nbsp;<a href="#Scoreboard-__init__">__init__</a>(self,&nbsp;game)<br>
+:method:&nbsp;<a href="#Scoreboard-check_high_score">check_high_score</a>(self)<br>
+:method:&nbsp;<a href="#Scoreboard-prep_score">prep_score</a>(self)<br>
+:method:&nbsp;<a href="#Scoreboard-show_score">show_score</a>(self)<br>
+:method:&nbsp;<a href="#Scoreboard-prep_high_score">prep_high_score</a>(self)<br>
+:method:&nbsp;<a href="#Scoreboard-prep_level">prep_level</a>(self)<br>
+:method:&nbsp;<a href="#Scoreboard-prep_ships">prep_ships</a>(self)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Scoreboard-__init__"><strong>__init__</strong></a>(self, game)</dt><dd><tt>Initialize&nbsp;the&nbsp;scrorekeeping&nbsp;attributes&nbsp;and&nbsp;creates&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Scoreboard">Scoreboard</a>.<br>
+&nbsp;<br>
+:param&nbsp;game&nbsp;AlienInvasion:&nbsp;The&nbsp;current&nbsp;game&nbsp;of&nbsp;Alien&nbsp;Invasion.<br>
+:var&nbsp;game&nbsp;AlienInvasion:&nbsp;The&nbsp;current&nbsp;game&nbsp;of&nbsp;Alien&nbsp;Invasion&nbsp;as&nbsp;an&nbsp;attribute.<br>
+:var&nbsp;screen&nbsp;Surface:&nbsp;The&nbsp;screen&nbsp;of&nbsp;the&nbsp;game.<br>
+:var&nbsp;screen_rect&nbsp;Rect:&nbsp;The&nbsp;dimensions&nbsp;of&nbsp;the&nbsp;screen.<br>
+:var&nbsp;settings&nbsp;Settings:&nbsp;The&nbsp;settings&nbsp;of&nbsp;the&nbsp;game.<br>
+:var&nbsp;stats&nbsp;GameStats:&nbsp;The&nbsp;statistics&nbsp;of&nbsp;the&nbsp;game.<br>
+:var&nbsp;text_color&nbsp;(int,&nbsp;int,&nbsp;int):&nbsp;The&nbsp;color&nbsp;of&nbsp;the&nbsp;text&nbsp;of&nbsp;the&nbsp;scoring.<br>
+:var&nbsp;font&nbsp;Font:&nbsp;The&nbsp;font&nbsp;of&nbsp;the&nbsp;scoring.<br>
+:returns&nbsp;<a href="#Scoreboard">Scoreboard</a>:&nbsp;Generates&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;<a href="#Scoreboard">Scoreboard</a>&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Scoreboard-check_high_score"><strong>check_high_score</strong></a>(self)</dt><dd><tt>Check&nbsp;for&nbsp;new&nbsp;high&nbsp;score&nbsp;and&nbsp;update&nbsp;it&nbsp;if&nbsp;necessary.<br>
+&nbsp;<br>
+:var&nbsp;stats.high_score&nbsp;int:&nbsp;The&nbsp;highest&nbsp;score&nbsp;of&nbsp;the&nbsp;game&nbsp;on&nbsp;this&nbsp;computer.<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Scoreboard-prep_high_score"><strong>prep_high_score</strong></a>(self)</dt><dd><tt>Turn&nbsp;the&nbsp;high&nbsp;score&nbsp;into&nbsp;a&nbsp;rendered&nbsp;image.<br>
+&nbsp;<br>
+:var&nbsp;high_score&nbsp;int:&nbsp;Highest&nbsp;score&nbsp;in&nbsp;the&nbsp;game&nbsp;on&nbsp;this&nbsp;computer.<br>
+:var&nbsp;high_score_str:&nbsp;Highest&nbsp;score&nbsp;converted&nbsp;into&nbsp;an&nbsp;image.<br>
+:var&nbsp;high_score_image&nbsp;Surface:&nbsp;Image&nbsp;of&nbsp;the&nbsp;highest&nbsp;score&nbsp;rendered.<br>
+:var&nbsp;high_score_rect&nbsp;Rect:&nbsp;Dimension&nbsp;of&nbsp;the&nbsp;var&nbsp;high_score_image.<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Scoreboard-prep_level"><strong>prep_level</strong></a>(self)</dt><dd><tt>Turn&nbsp;the&nbsp;level&nbsp;into&nbsp;a&nbsp;rendered&nbsp;image.<br>
+&nbsp;<br>
+:var&nbsp;level_str&nbsp;str:&nbsp;The&nbsp;current&nbsp;level&nbsp;of&nbsp;the&nbsp;user&nbsp;in&nbsp;the&nbsp;game.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+:var&nbsp;level_image&nbsp;Surface:&nbsp;Rendered&nbsp;image&nbsp;of&nbsp;level_str&nbsp;var.<br>
+:var&nbsp;level_rect&nbsp;Rect:&nbsp;Rectangular&nbsp;dimensions&nbsp;of&nbsp;level_image&nbsp;var.<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Scoreboard-prep_score"><strong>prep_score</strong></a>(self)</dt><dd><tt>Turn&nbsp;the&nbsp;score&nbsp;into&nbsp;a&nbsp;rendered&nbsp;image.<br>
+&nbsp;<br>
+:var&nbsp;rounded_score&nbsp;int:&nbsp;The&nbsp;score&nbsp;rounded.<br>
+:var&nbsp;score_str&nbsp;str:&nbsp;The&nbsp;string&nbsp;of&nbsp;text&nbsp;containing&nbsp;the&nbsp;score.<br>
+:var&nbsp;score_image&nbsp;Surface:&nbsp;The&nbsp;image&nbsp;rendered&nbsp;of&nbsp;the&nbsp;scoring.<br>
+:var&nbsp;score_rect&nbsp;Rect:&nbsp;The&nbsp;rectangle&nbsp;dimension&nbsp;of&nbsp;the&nbsp;scoring.<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Scoreboard-prep_ships"><strong>prep_ships</strong></a>(self)</dt><dd><tt>Show&nbsp;how&nbsp;many&nbsp;ships&nbsp;are&nbsp;left.<br>
+&nbsp;<br>
+:var&nbsp;ships&nbsp;Group:&nbsp;Group&nbsp;of&nbsp;ships&nbsp;indicating&nbsp;lifes&nbsp;of&nbsp;the&nbsp;player.<br>
+:var&nbsp;ship_number&nbsp;int:&nbsp;The&nbsp;number&nbsp;of&nbsp;each&nbsp;ship&nbsp;to&nbsp;be&nbsp;displayed.<br>
+:var&nbsp;ship&nbsp;Ship:&nbsp;A&nbsp;ship&nbsp;to&nbsp;be&nbsp;displayed.<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Scoreboard-show_score"><strong>show_score</strong></a>(self)</dt><dd><tt>Draw&nbsp;the&nbsp;score,&nbsp;the&nbsp;level&nbsp;and&nbsp;the&nbsp;ships&nbsp;(lifes&nbsp;of&nbsp;the&nbsp;player)&nbsp;to&nbsp;the&nbsp;screen.<br>
+&nbsp;<br>
+:returns:&nbsp;None.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
